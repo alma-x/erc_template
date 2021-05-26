@@ -56,6 +56,9 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py
 RUN rm get-pip.py
 
+# Install docker-compose
+RUN python3 -m pip install docker-compose
+
 # Permit SSH root login
 RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
