@@ -51,6 +51,11 @@ RUN apt-get update && \
         ros-melodic-navigation \
         ros-melodic-interactive-markers
 
+# Install pip
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python3 get-pip.py
+RUN rm get-pip.py
+
 # Permit SSH root login
 RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
