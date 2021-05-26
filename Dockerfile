@@ -84,7 +84,6 @@ RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc && \
     echo "source /catkin_ws/devel/setup.bash" >> /root/.bashrc && \
     echo "export TURTLEBOT3_MODEL=waffle" >> /root/.bashrc
     
-
 # Cleanup
 RUN rm -rf /root/.cache
 
@@ -93,4 +92,7 @@ ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 WORKDIR /catkin_ws
+
+COPY robot.py .
+
 ENTRYPOINT [ "/entrypoint.sh" ]
