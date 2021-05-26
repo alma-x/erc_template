@@ -15,6 +15,7 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/
 
 RUN apt-get update && \
     apt-get install -y \
+        nano \
         openssh-server \
         python-pip \
         python-tk \
