@@ -1,12 +1,14 @@
 version: '3.7'
 services:
     simulation:
-        image: turtlebot3
+        build: .
+        #image: turtlebot3
         restart: unless-stopped                 # Restart the container unless manually stopped
         volumes:
           - /tmp/.X11-unix:/tmp/.X11-unix:rw    # GUI related
         environment:
             - PYTHONUNBUFFERED=1
+            - FREEDOM_URL="https://api.freedomrobotics.ai/accounts/A80A6D57D5694185BFBABCA3C/devices/DB196C7464A9A622ECD85894445/installscript?mc_token=T94EBB50C4C2CB14EDD6E7D16&mc_secret=Sfdac5056daeec7315c5fa27c&install_elements=webrtc&auto_install_deps=true&ppa_is_allowed=true"
             - DISPLAY                           # GUI related
             - QT_X11_NO_MITSHM=1                # GUI related
             - NVIDIA_VISIBLE_DEVICES=all        # GUI related
@@ -16,7 +18,7 @@ services:
         
         # If you don't have nvidia card, comment this out
         # Otherwise see here: https://github.com/docker/compose/issues/6691#issuecomment-705995189
-        runtime: nvidia                         
+        runtime: nvidia
 
         hostname: turtlebot3
         
